@@ -75,12 +75,12 @@ namespace LabThree
             {
                 for (int ColumnIndex = 0; ColumnIndex < Result.Dimension; ++ColumnIndex)
                 {
-                    double sum = 0;
+                    double Sum = 0;
                     for (int Index = 0; Index < Result.Dimension; ++Index)
                     {
-                        sum += FirstMatrix[RowIndex, Index] * SecondMatrix[Index, ColumnIndex];
+                        Sum += FirstMatrix[RowIndex, Index] * SecondMatrix[Index, ColumnIndex];
                     }
-                    Result[RowIndex, ColumnIndex] = sum;
+                    Result[RowIndex, ColumnIndex] = Sum;
                 }   
             }
             return Result;
@@ -124,9 +124,9 @@ namespace LabThree
 
         public static bool operator >=(CreationOfMatrix FirstMatrix, CreationOfMatrix SecondMatrix)
         {
-            for (int RowIndex = 0; RowIndex < FirstMatrix.Dimension; RowIndex++)
+            for (int RowIndex = 0; RowIndex < FirstMatrix.Dimension; ++RowIndex)
             {
-                for (int RowCounter = 0; RowCounter < FirstMatrix.Dimension; RowCounter++)
+                for (int RowCounter = 0; RowCounter < FirstMatrix.Dimension; ++RowCounter)
                 {
                     if (FirstMatrix[RowIndex, RowCounter] < SecondMatrix[RowIndex, RowCounter])
                     {
@@ -205,15 +205,15 @@ namespace LabThree
             {
                 return Matrix[0, 0] * Matrix[1, 1] - Matrix[0, 1] * Matrix[1, 0];
             } else {
-                double result = 0;
-                int sign = 1;
+                double Result = 0;
+                int Sign = 1;
                 for (int RowIndex = 0; RowIndex < Dimension; ++RowIndex)
                 {
                     var subMatrix = SubMatrix(RowIndex, 0);
-                    result += sign * Matrix[RowIndex, 0] * subMatrix.Determinant();
-                    sign = -sign;
+                    Result += Sign * Matrix[RowIndex, 0] * subMatrix.Determinant();
+                    Sign = -Sign;
                 }
-                return result;
+                return Result;
               }
         }
 
@@ -224,43 +224,43 @@ namespace LabThree
             {
                 throw new InvalidOperationException("Эта матрица не может быть обратной.");
             }
-            var result = new CreationOfMatrix(Dimension);
+            var Result = new CreationOfMatrix(Dimension);
 
-            int sign = 1;
+            int Sign = 1;
             for (int RowIndex = 0; RowIndex < Dimension; ++RowIndex)
             {
                 for (int ColumnIndex = 0; ColumnIndex < Dimension; ++ColumnIndex)
                 {
                     var subMatrix = SubMatrix(RowIndex, ColumnIndex);
-                    result[ColumnIndex, RowIndex] = sign * subMatrix.Determinant() / determinant;
-                    sign = -sign;
+                    Result[ColumnIndex, RowIndex] = Sign * subMatrix.Determinant() / determinant;
+                    Sign = -Sign;
                 }
             }
-            return result;
+            return Result;
         }
 
-        private CreationOfMatrix SubMatrix(int rowToRemove, int columnToRemove)
+        private CreationOfMatrix SubMatrix(int RowToRemove, int ColumnToRemove)
         {
-            var subMatrix = new CreationOfMatrix(Dimension - 1);
+            var SubMatrix = new CreationOfMatrix(Dimension - 1);
 
-            int subRow = 0;
-            for (int row = 0; row < Dimension; ++row)
+            int SubRow = 0;
+            for (int Row = 0; Row < Dimension; ++Row)
             {
-                if (row == rowToRemove)
+                if (Row == RowToRemove)
                     continue;
 
-                int subColumn = 0;
-                for (int column = 0; column < Dimension; ++column)
+                int SubColumn = 0;
+                for (int Column = 0; Column < Dimension; ++Column)
                 {
-                    if (column == columnToRemove)
+                    if (Column == ColumnToRemove)
                         continue;
 
-                    subMatrix[subRow, subColumn] = Matrix[row, column];
-                    subColumn++;
+                    SubMatrix[SubRow, SubColumn] = Matrix[Row, Column];
+                    SubColumn++;
                 }
-                subRow++;
+                ++SubRow;
             }
-            return subMatrix;
+            return SubMatrix;
         }
 
         public override string ToString()
@@ -289,9 +289,9 @@ namespace LabThree
             {
                 for (int ColumnIndex = 0; ColumnIndex < Dimension; ++ColumnIndex)
                 {
-                    int compare = Matrix[RowIndex, ColumnIndex].CompareTo(other.Matrix[RowIndex, ColumnIndex]);
-                    if (compare != 0)
-                        return compare;
+                    int Compare = Matrix[RowIndex, ColumnIndex].CompareTo(other.Matrix[RowIndex, ColumnIndex]);
+                    if (Compare != 0)
+                        return Compare;
                 }
             }
             return 0;
@@ -314,15 +314,15 @@ namespace LabThree
 
         public CreationOfMatrix Clone()
         {
-            var clone = new CreationOfMatrix(Dimension);
+            var Clone = new CreationOfMatrix(Dimension);
             for (int RowIndex = 0; RowIndex < Dimension; ++RowIndex)
             {
                 for (int ColumnIndex = 0; ColumnIndex < Dimension; ++ColumnIndex)
                 {
-                    clone[RowIndex, ColumnIndex] = Matrix[RowIndex, ColumnIndex];
+                    Clone[RowIndex, ColumnIndex] = Matrix[RowIndex, ColumnIndex];
                 }
             }
-            return clone;
+            return Clone;
         }
     }
 }

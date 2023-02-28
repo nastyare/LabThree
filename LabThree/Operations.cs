@@ -57,7 +57,7 @@ namespace LabThree
 
             Console.WriteLine($"Детерминант матрицы А: {FirstMatrix.Determinant()}");
 
-          /*  try
+            try
             {
                 var InverseA = FirstMatrix.Inverse();
                 Console.WriteLine($"Обратная матрица А:\n{InverseA}");
@@ -65,7 +65,7 @@ namespace LabThree
             catch (NotInvertible ex)
             {
                 Console.WriteLine(ex.Message);
-            }*/
+            }
         }
     }
 }
