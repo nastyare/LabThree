@@ -42,24 +42,24 @@ namespace LabThree
             Console.WriteLine($"Вторая матрица: \n{SecondMatrix}");
 
 
-            Console.WriteLine($"Сложение: \n{FirstMatrix.Clone() + SecondMatrix.Clone()}");
+            Console.WriteLine($"Сложение: \n{FirstMatrix + SecondMatrix}");
 
-            Console.WriteLine($"Вычитание: \n{FirstMatrix.Clone() - SecondMatrix.Clone()}");
+            Console.WriteLine($"Вычитание: \n{FirstMatrix - SecondMatrix}");
 
             Console.WriteLine($"Произведение: \n{FirstMatrix.Clone() * SecondMatrix.Clone()}");
 
-            Console.WriteLine($"Матрица А > Матрица Б: {FirstMatrix.Clone() > SecondMatrix.Clone()}");
-            Console.WriteLine($"Матрица А >= Матрица Б: {FirstMatrix.Clone() >= SecondMatrix.Clone()}");
-            Console.WriteLine($"Матрица А <= Матрица Б: {FirstMatrix.Clone() <= SecondMatrix.Clone()}");
-            Console.WriteLine($"Матрица А < Матрица Б: {FirstMatrix.Clone() < SecondMatrix.Clone()}");
-            Console.WriteLine($"Матрица А == Матрица Б: {FirstMatrix.Clone() == SecondMatrix.Clone()}");
-            Console.WriteLine($"Матрица А != Матрица Б: {FirstMatrix.Clone() != SecondMatrix.Clone()} \n");
+            Console.WriteLine($"Матрица А > Матрица Б: {FirstMatrix > SecondMatrix}");
+            Console.WriteLine($"Матрица А >= Матрица Б: {FirstMatrix >= SecondMatrix}");
+            Console.WriteLine($"Матрица А <= Матрица Б: {FirstMatrix <= SecondMatrix}");
+            Console.WriteLine($"Матрица А < Матрица Б: {FirstMatrix < SecondMatrix}");
+            Console.WriteLine($"Матрица А == Матрица Б: {FirstMatrix == SecondMatrix}");
+            Console.WriteLine($"Матрица А != Матрица Б: {FirstMatrix != SecondMatrix} \n");
 
-            Console.WriteLine($"Детерминант матрицы А: {FirstMatrix.Determinant()}");
+            Console.WriteLine($"Детерминант матрицы А: {FirstMatrix.Determinant()} \n");
 
             try
             {
-                var InverseA = FirstMatrix.Inverse();
+                var InverseA = FirstMatrix.Inversion();
                 Console.WriteLine($"Обратная матрица А:\n{InverseA}");
             }
             catch (NotInvertible ex)

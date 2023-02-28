@@ -218,7 +218,7 @@ namespace LabThree
               }
         }
 
-        public CreationOfMatrix Inverse()
+        public CreationOfMatrix Inversion()
         {
             var determinant = Determinant();
             if (determinant == 0)
