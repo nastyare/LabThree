@@ -258,7 +258,7 @@ namespace LabThree
                     SubMatrix[SubRow, SubColumn] = Matrix[Row, Column];
                     SubColumn++;
                 }
-                ++SubRow;
+                ++SubRow;   
             }
             return SubMatrix;
         }
