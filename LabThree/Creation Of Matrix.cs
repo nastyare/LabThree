@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace LabThree
 {
@@ -256,7 +257,7 @@ namespace LabThree
                         continue;
 
                     SubMatrix[SubRow, SubColumn] = Matrix[Row, Column];
-                    SubColumn++;
+                    ++SubColumn;
                 }
                 ++SubRow;   
             }
@@ -280,7 +281,7 @@ namespace LabThree
         public int CompareTo(CreationOfMatrix other)
         {
             if (other is null)
-                return 1;
+                return -1;
 
             if (Dimension != other.Dimension)
                 return Dimension.CompareTo(other.Dimension);
@@ -297,14 +298,19 @@ namespace LabThree
             return 0;
         }
 
-        public override bool Equals(object Obj)
+        public bool Equals(CreationOfMatrix SquareMatrix)
         {
-            if (Obj is null || !(Obj is CreationOfMatrix))
+            for (int RowIndex = 0; RowIndex < Dimension; ++RowIndex)
             {
-                return false;
+                for (int ColumnIndex = 0; ColumnIndex < Dimension; ++ColumnIndex)
+                {
+                    if (Matrix[RowIndex, ColumnIndex] != SquareMatrix.Matrix[RowIndex, ColumnIndex])
+                    {
+                        return false;
+                    }
+                }
             }
-
-            return this == (CreationOfMatrix)Obj;
+            return true;
         }
 
         public override int GetHashCode()
