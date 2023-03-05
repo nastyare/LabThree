@@ -189,7 +189,7 @@ namespace LabThree
 
         public static bool operator !=(CreationOfMatrix FirstMatrix, CreationOfMatrix SecondMatrix)
         {
-            return !(FirstMatrix == SecondMatrix);
+            return !(FirstMatrix == SecondMatrix.Clone());
         }
 
         public static explicit operator bool(CreationOfMatrix Matrix)

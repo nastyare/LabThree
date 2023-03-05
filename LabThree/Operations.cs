@@ -46,7 +46,7 @@ namespace LabThree
 
             Console.WriteLine($"Вычитание: \n{FirstMatrix - SecondMatrix}");
 
-            Console.WriteLine($"Произведение: \n{FirstMatrix.Clone() * SecondMatrix.Clone()}");
+            Console.WriteLine($"Произведение: \n{FirstMatrix * SecondMatrix}");
 
             Console.WriteLine($"Матрица А > Матрица Б: {FirstMatrix > SecondMatrix}");
             Console.WriteLine($"Матрица А >= Матрица Б: {FirstMatrix >= SecondMatrix}");
